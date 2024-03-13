@@ -7,3 +7,16 @@
     background-repeat: no-repeat;
     background-size: cover
 }
+
+.todayCard{
+  
+    margin-left: 18%;      
+    margin-right: 18%;
+    width: auto;
+    /* width: 30rem; */
+}
+
+.sRowCards{
+  flex-direction: row;  
+  
+}

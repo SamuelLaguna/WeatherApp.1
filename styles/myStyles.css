@@ -17,6 +17,22 @@
 }
 
 .sRowCards{
+    display: flex;
   flex-direction: row;  
-  
+  justify-content: space-evenly;
+}
+
+.todayCardDes{
+   color: blue;
+}
+
+.backgroundTodayCardColor{
+    color: blue;
+}
+
+
+.seeThrew{
+    opacity: 52%;
+   border: 30%;
+   
 }

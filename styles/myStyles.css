@@ -36,3 +36,9 @@
    border: 30%;
    
 }
+
+.geo{
+    display: flex;
+    justify-content: start;
+    
+}

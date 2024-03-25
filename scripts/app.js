@@ -37,13 +37,19 @@ async function getCity(cityOfChoice){
     cardTemp1.innerText = apiResponse.temp;
     cardTemp2.innerText = apiResponse.temp;
     cardTemp3.innerText = apiResponse.temp;
-    cardTemp4.innerHTML = apiResponse.temp;
-    cardTemp5.innerHTML = apiResponse.temp;
-    
+    cardTemp4.innerText = apiResponse.temp;
+    cardTemp5.innerText = apiResponse.temp;
+    // cityData = apiResponse;
 
 
 
 }
 getCity("Stockton");
 
+searchBar.addEventListener("keyup", function (event){
+if(event.key === "Enter" ){
+    let apiResponse = "";
+    cityName.innerHTML = apiResponse.name;
 
+}
+});

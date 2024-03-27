@@ -22,23 +22,27 @@
   justify-content: space-evenly;
 }
 
-.todayCardDes{
+/* .todayCardDes{
    color: blue;
-}
+} */
 
-.backgroundTodayCardColor{
+/* .backgroundTodayCardColor{
     color: blue;
-}
+} */
 
 
-.seeThrew{
+/* .seeThrew{
     opacity: 52%;
    border: 30%;
    
-}
+} */
 
 .geo{
     display: flex;
     justify-content: start;
-    
+
+}
+
+.todayCardColor{
+    background-color:rgb(35, 120, 198,.5);
 }

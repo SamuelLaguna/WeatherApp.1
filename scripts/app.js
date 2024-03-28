@@ -36,24 +36,49 @@ async function getCity(cityOfChoice){
     let apiResponse = await fetch("http://api.openweathermap.org/data/2.5/weather?q=" + cityOfChoice + "&units=imperial&appid=512e94f3b87d608e730d846d23470de1").then(Response => Response.json());
     console.log(apiResponse);
     let currentDate = new Date();
-    // cityN.innerText = apiResponse.city.name;
-    // cityN.innerText = apiResponse.main.name;
+    const iconBaseUrl = "https://openweathermap.org/img/w/";
     cityN.innerText = apiResponse.name;
     dateOfDay.innerText = currentDate.toLocaleDateString(undefined, options);
     hi.innerText = Math.floor(apiResponse.main.temp_max);
     temp.innerText = Math.floor(apiResponse.main.temp);
     lo.innerText = Math.floor(apiResponse.main.temp_min);
-    cardTemp1.innerText = Math.floor(apiResponse.main.temp);
-    cardTemp2.innerText = Math.floor(apiResponse.main.temp);
-    cardTemp3.innerText = Math.floor(apiResponse.main.temp);
-    cardTemp4.innerText = Math.floor(apiResponse.main.temp);
-    cardTemp5.innerText = Math.floor(apiResponse.main.temp);
+    // cardTemp1.innerText = Math.floor(apiResponse.main.temp);
+    // cardTemp2.innerText = Math.floor(apiResponse.main.temp);
+    // cardTemp3.innerText = Math.floor(apiResponse.main.temp);
+    // cardTemp4.innerText = Math.floor(apiResponse.main.temp);
+    // cardTemp5.innerText = Math.floor(apiResponse.main.temp);
     cityData = apiResponse;
+    const mainIconCode = apiResponse.weather[0].icon;
+    const mainIconUrl = `${iconBaseUrl}${mainIconCode}.png`;
+    icon1.src = mainIconUrl;
+    icon2.src = mainIconUrl;
+    icon3.src = mainIconUrl;
+    icon4.src = mainIconUrl;
+    icon5.src = mainIconUrl;
+    icon6.src = mainIconUrl;
 
-
-
+    // icon1.src = "https://openweathermap.org/img/wn/" + apiResponse.weather["0"].icon + ".png";
+    // icon2.src = "https://openweathermap.org/img/wn/" + apiResponse.weather["0"].icon + ".png";
+    // icon3.src = "https://openweathermap.org/img/wn/" + apiResponse.weather["0"].icon + ".png";
+    // icon4.src = "https://openweathermap.org/img/wn/" + apiResponse.weather["0"].icon + ".png";
+    // icon5.src = "https://openweathermap.org/img/wn/" + apiResponse.weather["0"].icon + ".png";
+    
 }
 getCity("Stockton");
+
+
+async function getFive(cityOfChoice){
+let apiResponse = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityOfChoice + "&units=imperial&appid=512e94f3b87d608e730d846d23470de1").then(Response => Response.json());
+console.log(apiResponse);
+cardTemp1.innerText = Math.floor(apiResponse.list["2"].main.temp);
+    cardTemp2.innerText = Math.floor(apiResponse.list["10"].main.temp);
+    cardTemp3.innerText = Math.floor(apiResponse.list["18"].main.temp);
+    cardTemp4.innerText = Math.floor(apiResponse.list["26"].main.temp);
+    cardTemp5.innerText = Math.floor(apiResponse.list["34"].main.temp);
+}
+getFive("Stockton");
+
+
 
 searchBar.addEventListener("keyup", function (event){
 if(event.key === "Enter" ){
@@ -62,25 +87,6 @@ if(event.key === "Enter" ){
 
 }
 });
-
-// favBtn.addEventListener("click", function(){
-//     let obj = {
-//         "favCity" : cityData.name
-//     }
-
-//     favArr.push(obj);
-//     localStorage.setItem("favrioteCity", JSON.stringify(favArr));
-//     let colDiv = document.createElement("div")
-//     colDiv.classList = "col";
-//     let ptag = document.createElement("p");
-//     ptag.innerText = cityData.name;
-//     ptag.addEventListener("click", function(){
-//         getCity(ptag.innerText);
-//     })
-
-//     colDiv.appendChild(ptag);
-//     injectHere.appendChild(colDiv);
-// });
 
 
 
@@ -97,7 +103,7 @@ favBtn.addEventListener("click", function() {
     let ptag = document.createElement("p");
     ptag.innerText = cityData.name;
     ptag.addEventListener("click", function() {
-      getCity(ptag.innerText);
+      getFive(ptag.innerText);
     });
   
     let deleteBtn = document.createElement("button");
@@ -114,6 +120,9 @@ favBtn.addEventListener("click", function() {
     colDiv.appendChild(deleteBtn);
     injectHere.appendChild(colDiv);
   });
+
+
+
 
 
 
